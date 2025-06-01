@@ -1,3 +1,52 @@
+How to Use (with new option):
+
+    Save and make executable as before.
+
+    Run the script. If tools are missing, it will prompt you.
+
+    Non-interactive installation: If you want the script to attempt installations without prompting (e.g., in an automated environment), use the -y or --yes flag:
+
+          
+    ./super_url_finder.sh -y example.com
+    ./super_url_finder.sh -y -s -o output.txt domains_file.txt
+
+        
+
+    IGNORE_WHEN_COPYING_START
+
+    Use code with caution. Bash
+    IGNORE_WHEN_COPYING_END
+
+Key Changes for Installation:
+
+    TOOLS_INSTALL_DIR: Where git cloned tools will reside (~/recon_tools_automated).
+
+    REQUIRED_TOOLS_MAP: Defines tools and their installation methods.
+
+    REQUIRED_TOOLS_ORDER: Ensures prerequisite checks are done before tool checks.
+
+    prompt_install(): Handles user confirmation.
+
+    check_prerequisites(): Checks for go, python3, pip3, git.
+
+    install_tool(): Contains logic for go install, pip install, and git clone + pip install ..
+
+    check_and_install_tools(): Orchestrates the checking and installation process for all defined tools.
+
+    Tool execution sections now check if command -v toolname &>/dev/null; before attempting to run each tool.
+
+    Waymore Output: Modified how waymore output is captured since it usually writes to a file.
+
+    ParamSpider Output: ParamSpider's output behavior has varied; the script now tries to capture its stdout directly and also checks a common file output location.
+
+    -y / --yes flag added for non-interactive installs.
+
+This version is considerably more complex due to the installation logic, but it aims to be more user-friendly by attempting to set itself up. Remember the disclaimers about OS-level dependencies and environment PATH configurations.
+
+
+
+
+
 # super_url_finder.sh
 
 How to Use:
